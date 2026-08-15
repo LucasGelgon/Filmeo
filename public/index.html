@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filméo — Recommandation de films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+
+<div class="ambient"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">🎬</span>
+    <div>
+      <h1>Filméo</h1>
+    </div>
+  </div>
+</header>
+
+<nav class="mode-tabs" id="mode-tabs">
+  <button class="mode-tab active" data-mode="criteria"><span class="mode-tab-icon">🎯</span>Par criteres</button>
+  <button class="mode-tab" data-mode="dialogue"><span class="mode-tab-icon">💬</span>Dialogue guide</button>
+  <button class="mode-tab" data-mode="group"><span class="mode-tab-icon">🍿</span>Soiree entre amis</button>
+</nav>
+
+<main>
+  <section class="panel" id="criteria-panel" data-mode-panel="criteria">
+    <h2><span class="step-badge">1</span>Vos gouts</h2>
+
+    <div class="field-group">
+      <h3><span class="field-icon">🎭</span>Genres que vous aimez</h3>
+      <div id="genre-chips" class="chips"></div>
+    </div>
+
+    <div class="field-group field-group-danger">
+      <h3><span class="field-icon">🚫</span>Genres a eviter</h3>
+      <div id="avoid-chips" class="chips chips-avoid"></div>
+    </div>
+
+    <div class="field-group">
+      <h3><span class="field-icon">✨</span>Ambiance recherchee</h3>
+      <div id="mood-chips" class="chips chips-mood"></div>
+    </div>
+
+    <div class="field-group">
+      <h3><span class="field-icon">❤️</span>Films que vous avez deja aimes <span class="hint">(optionnel)</span></h3>
+      <input type="text" id="movie-search" placeholder="Rechercher un film...">
+      <div id="movie-picker" class="movie-picker"></div>
+      <div id="liked-summary" class="liked-summary"></div>
+    </div>
+
+    <button id="recommend-btn" class="cta"><span>Obtenir mes recommandations</span></button>
+  </section>
+
+  <section class="panel" id="dialogue-panel" data-mode-panel="dialogue" hidden>
+    <h2><span class="step-badge">💬</span>Dialogue guide</h2>
+    <p class="hint">Repondez a quelques questions : la liste des films possibles se reduit au fur et a mesure, jusqu'a trouver les meilleures suggestions.</p>
+    <div id="dialogue-progress" class="dialogue-progress"></div>
+    <div id="dialogue-question" class="dialogue-question"></div>
+    <div class="dialogue-actions">
+      <button id="dialogue-skip" class="secondary-btn">Passer cette question</button>
+      <button id="dialogue-restart" class="secondary-btn">↺ Recommencer</button>
+    </div>
+  </section>
+
+  <section class="panel" id="group-panel" data-mode-panel="group" hidden>
+    <h2><span class="step-badge">🍿</span>Soiree entre amis</h2>
+    <p class="hint">Ajoutez les gouts de chaque personne pour trouver un film qui plait a tout le monde.</p>
+    <div id="group-people"></div>
+    <button id="group-add-person" class="secondary-btn">+ Ajouter une personne</button>
+    <button id="group-recommend-btn" class="cta"><span>Trouver un film pour le groupe</span></button>
+  </section>
+
+  <section class="panel" id="results-panel">
+    <h2><span class="step-badge">2</span>Recommandations</h2>
+    <p id="results-hint" class="hint">Choisissez vos preferences puis cliquez sur le bouton pour voir vos recommandations.</p>
+    <div id="results" class="results-grid"></div>
+  </section>
+</main>
+
+<div id="toast-stack" class="toast-stack"></div>
+
+<script src="app.js?v=4"></script>
+</body>
+</html>
